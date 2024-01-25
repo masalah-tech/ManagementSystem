@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SelectListItem>
+
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">User List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editUserIdInput" />
+                <div class="mb-3">
+                    <label for="editUsernameInput" class="form-label">Username</label>
+                    <input type="text" id="editUsernameInput" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="editUserEmailInput" class="form-label">Email</label>
+                    <input type="email" id="editUserEmailInput" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="editUserRoleInput" class="form-label">Role</label>
+                    <select id="editUserRoleInput" asp-items="Model" class="form-control">
+                        <option disabled selected>-- Select Role --</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button onclick="updateUserData()" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/user.js"></script>
+}
